@@ -5,6 +5,13 @@ function hola (nombre,miCallback){
     }, 1000);
 }
 
+function hablar(callbackHablar){
+    setTimeout(() => {
+        console.log('Bla bla bla bla!');
+        callbackHablar();
+    }, 1000);
+}
+
 function adios(nombre, otroCallback){
     setTimeout(() => {
         console.log('Adios '+ nombre);
@@ -12,14 +19,26 @@ function adios(nombre, otroCallback){
     }, 1000);
 }
 
+function conversacion(nombre, veces, callback){
+    if(veces > 0){
+        hablar(function(){
+            conversacion(nombre,--veces,function(){
+                console.log('Proceso terminado');
+            });
+        })
+    }else{
+        adios(nombre,callback);
+    }
+}
+
+
+
+
 
 console.log('Iniciando proceso...');
-hola('Jaime', function(nombre){
-    adios(nombre,function(){
-        console.log('Terminando Proceso....');
-    });
-    
-});
+hola('Carlos', function(nombre){
+    conversacion(nombre,3,adios)
+})
 
 
 // hola('Jaime', function(){});

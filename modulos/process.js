@@ -12,6 +12,7 @@ process.on('exit', ()=>{
 })
 
 
+
 process.on('uncaughtException',(err,origen)=>{
     console.error('Capturando el error');
     console.error(err);

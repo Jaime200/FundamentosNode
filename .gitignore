@@ -2,3 +2,4 @@
 node_modules
 *.txt
 /modulos/nativo/build
+/paquetes/npm/node_modules
